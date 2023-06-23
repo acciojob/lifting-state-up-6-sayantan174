@@ -1,25 +1,30 @@
-
 import React, { useState } from "react";
 import './../styles/App.css';
+import TodoList from "./TodoList";
 
-const App = () => {
-  const [btn1,setbtn1]=useState(true);
-  const [btn2,setbtn2]=useState(true);
-  const [btn3,setbtn3]=useState(true);
+function App() {
+  const [todos, setTodos] = useState([
+    { id: 1, text: "Learn React", completed: false },
+    { id: 2, text: "Build a React app", completed: false },
+    { id: 3, text: "Deploy the React app", completed: false }
+  ]);
 
+  const handleComplete = (id) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, completed: true };
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+  };
 
   return (
     <div>
-        {/* Do not remove the main div */}
-        <h1>Parent Component</h1>
-        <h3>Child Component</h3>
-        <ul>
-          <li>Learn React {btn1 && <button onClick={()=>{setbtn1(!btn1)}}>Complete</button>}</li>
-          {/* <li>Build a React app {btn2 && <button onClick={()=>{setbtn2(!btn2)}}>Complete</button>}</li>
-          <li>Deploy the React app {btn3 && <button onClick={()=>{setbtn3(!btn3)}}>Complete</button>}</li> */}
-        </ul>
+      <h1>Parent Component</h1>
+      <TodoList todos={todos} handleComplete={handleComplete} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
