@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import './../styles/App.css';
 
 const App = () => {
-  const [btn1,setbtn1]=useState(false);
-  const [btn2,setbtn2]=useState(false);
-  const [btn3,setbtn3]=useState(false);
+  const [btn1,setbtn1]=useState(true);
+  const [btn2,setbtn2]=useState(true);
+  const [btn3,setbtn3]=useState(true);
 
 
   return (
